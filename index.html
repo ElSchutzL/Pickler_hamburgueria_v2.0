@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pickler Hamburgueria | O Melhor Hambúrguer Artesanal do Brasil</title>
+  <meta name="description"
+    content="Cardápio oficial da Pickler Hamburgueria. Hambúrgueres artesanais na brasa, combos completos, porções crocantes, molhos exclusivos e sobremesas surpreendentes.">
+  <link rel="icon" type="image/png" href="Logo/Rickpickler.png">
+
+  <!-- Google Fonts: Poppins & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome 6.5.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Estilos customizados -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Cabeçalho / Barra Superior Fixa -->
+  <header class="barra_superior">
+    <div class="barra_left">
+      <img src="Logo/Rickpickler.png" alt="Mascote Pickle Rick segurando hambúrguer - Logo Pickler" class="logo">
+      <div class="barra_texto">
+        <h1>Pickler Hamburgueria</h1>
+        <p class="slogan">A melhor do Brasil!</p>
+      </div>
+      <div class="status-aberto" title="Estamos atendendo pedidos agora!">
+        <span class="dot-online"></span>
+        <span class="status-texto">Aberto Agora</span>
+      </div>
+    </div>
+
+    <!-- Navegação de Contatos e Redes Sociais -->
+    <nav class="barra_right" aria-label="Redes sociais e contato">
+      <a href="tel:+5548912345678" class="social-link" title="Ligue para nós" aria-label="Telefone">
+        <i class="fas fa-phone"></i>
+      </a>
+      <a href="https://www.instagram.com/" class="social-link" target="_blank" rel="noopener noreferrer"
+        title="Instagram da Pickler" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/?locale=pt_BR" class="social-link" target="_blank" rel="noopener noreferrer"
+        title="Facebook da Pickler" aria-label="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://wa.me/5548912345678?text=Ol%C3%A1%2C%20Pickler%20Hamburgueria!%20Gostaria%20de%20fazer%20um%20pedido."
+        class="social-link social-link-wpp" target="_blank" rel="noopener noreferrer" title="Pedir no WhatsApp"
+        aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal / Cardápio -->
+  <main>
+
+    <!-- Hero Banner Temático -->
+    <section class="hero-banner" aria-label="Apresentação Pickler Hamburgueria">
+      <div class="hero-content">
+        <span class="hero-tag"><i class="fas fa-fire"></i> O Sabor Mais Lendário da Grande Florianópolis</span>
+        <h2 class="hero-title">Hambúrgueres Artesanais com o Toque Inconfundível Pickler</h2>
+        <p class="hero-subtitle">Carnes suculentas na brasa, queijo cheddar cremoso e nossos picles crocantes de receita
+          secreta.</p>
+        <div class="hero-vantagens">
+          <div class="vantagem-item"><i class="fas fa-motorcycle"></i> <span>Entrega Express</span></div>
+          <div class="vantagem-item"><i class="fas fa-award"></i> <span>Blend 100% Artesanal</span></div>
+          <div class="vantagem-item"><i class="fas fa-star"></i> <span>Nota 4.9 no Google</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra de Navegação Rápida & Filtros por Categoria (Sticky) -->
+    <div class="menu-nav-sticky">
+      <div class="menu-nav-inner">
+        <!-- Campo de Busca em Tempo Real -->
+        <div class="search-bar-wrap">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input type="search" id="campo-busca" placeholder="Buscar no cardápio (ex: Bacon, Cheddar, Combo, Suco...)"
+            aria-label="Buscar produtos no cardápio" autocomplete="off">
+          <button type="button" id="btn-limpar-busca" class="btn-limpar-busca" title="Limpar pesquisa"
+            style="display: none;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Abas de Categorias / Filtros -->
+        <nav class="category-pills" aria-label="Categorias do cardápio">
+          <button type="button" class="category-pill active" data-categoria="todos"><i class="fas fa-utensils"></i>
+            Todos</button>
+          <a href="#combos" class="category-pill" data-categoria="combos"><i class="fas fa-fire"></i> Combos</a>
+          <a href="#lanches" class="category-pill" data-categoria="lanches"><i class="fas fa-hamburger"></i>
+            Hambúrgueres</a>
+          <a href="#porcoes" class="category-pill" data-categoria="porcoes"><i class="fas fa-box-open"></i> Porções</a>
+          <a href="#bebidas" class="category-pill" data-categoria="bebidas"><i class="fas fa-wine-bottle"></i>
+            Bebidas</a>
+          <a href="#sobremesas" class="category-pill" data-categoria="sobremesas"><i class="fas fa-ice-cream"></i>
+            Sobremesas</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Mensagem de feedback caso nenhum item seja encontrado na busca -->
+    <div id="busca-sem-resultados" class="busca-sem-resultados" style="display: none;">
+      <i class="fas fa-search"></i>
+      <h3>Nenhum lanche ou item encontrado</h3>
+      <p>Tente buscar por outro termo ou limpe a busca para ver o cardápio completo.</p>
+      <button type="button" id="btn-reset-busca" class="btn-reset-busca">Ver todos os itens</button>
+    </div>
+
+    <!-- ======================================================================
+         1. SEÇÃO: COMBOS ESPECIAIS
+         ====================================================================== -->
+    <section id="combos" class="card-section" aria-label="Combos Especiais">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-badge badge-fogo"><i class="fas fa-fire"></i> Mais Econômico</span>
+          <h2 class="section-title">Combos Especiais</h2>
+        </div>
+        <p class="section-desc">Hambúrguer, acompanhamento crocante, molho artesanal e bebida gelada reunidos para a
+          melhor refeição.</p>
+      </div>
+
+      <div class="card-container">
+
+        <!-- Combo Unitário -->
+        <article class="hamburguer-card" data-categoria="combos">
+          <span class="card-tag tag-destaque"><i class="fas fa-user"></i> Individual</span>
+          <img src="Imagens/Combo_1_unitario.jpg"
+            alt="Combo Individual Pickler com hambúrguer, batata frita, molho e bebida" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Combo Unitário</h2>
+            <p>Contém: 1 Pickler mega, 1 porção de batata frita individual, 1 molho verde e 1 refrigerante à escolha.
+            </p>
+            <button class="btn-pedir" data-item="Combo Unitário" data-preco="R$ 54,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 54,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Combo Casal -->
+        <article class="hamburguer-card" data-categoria="combos">
+          <span class="card-tag tag-popular"><i class="fas fa-user-friends"></i> Para Dois</span>
+          <img src="Imagens/Combo_2_casal.jpg" alt="Combo Casal Pickler com dois hambúrgueres, batatas e bebidas"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Combo Casal</h2>
+            <p>Contém: 2 Pickler mega, 1 porção grande de batata frita, 1 molho verde e 2 refrigerantes à escolha.</p>
+            <button class="btn-pedir" data-item="Combo Casal" data-preco="R$ 98,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 98,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Combo Galera -->
+        <article class="hamburguer-card" data-categoria="combos">
+          <span class="card-tag tag-chef"><i class="fas fa-crown"></i> Família</span>
+          <img src="Imagens/Combo_3_galera.jpg"
+            alt="Combo Galera Pickler com quatro hambúrgueres variados, porções e bebidas" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Combo Galera</h2>
+            <p>Contém: 4 hambúrgueres à escolha, 1 porção grande de batatas, 1 porção de onion rings, 2 molhos e 4
+              bebidas.</p>
+            <button class="btn-pedir" data-item="Combo Galera" data-preco="R$ 179,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 179,90
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. SEÇÃO: LANCHES / HAMBÚRGUERES ARTESANAIS
+         ====================================================================== -->
+    <section id="lanches" class="card-section" aria-label="Hambúrgueres Artesanais">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-badge badge-burger"><i class="fas fa-hamburger"></i> Artesanais 180g</span>
+          <h2 class="section-title">Hambúrgueres Artesanais</h2>
+        </div>
+        <p class="section-desc">Pão brioche selado na manteiga, carnes nobres grelhadas no ponto certo e nosso picles
+          crocante da casa.</p>
+      </div>
+
+      <div class="card-container">
+
+        <!-- Pickler Mega -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-chef"><i class="fas fa-fire"></i> Mais Pedido</span>
+          <img src="Imagens/Pickler_mega.jpg" alt="Hambúrguer Pickler Mega com três carnes e queijo cheddar"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Mega</h2>
+            <p>Contém: Pão brioche, 3 burgers artesanais 180g, queijo cheddar, alface, tomate, picles crocante e molho
+              especial.</p>
+            <button class="btn-pedir" data-item="Pickler Mega" data-preco="R$ 44,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 44,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler da Casa -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-destaque"><i class="fas fa-star"></i> Carro-chefe</span>
+          <img src="Imagens/Pickler_dacasa.jpg" alt="Hambúrguer Pickler da Casa com bacon e picles"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler da Casa</h2>
+            <p>Contém: Pão brioche, 2 burgers artesanais 180g, bacon crocante, queijo cheddar, alface, tomate, picles e
+              molho da casa.</p>
+            <button class="btn-pedir" data-item="Pickler da Casa" data-preco="R$ 39,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 39,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Classic -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-suave">Clássico</span>
+          <img src="Imagens/Pickler_classic.jpg" alt="Hambúrguer Pickler Classic com cheddar, alface e tomate"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Classic</h2>
+            <p>Contém: Pão brioche, burger artesanal 180g, queijo cheddar cremoso, alface crocante e tomate fresco.</p>
+            <button class="btn-pedir" data-item="Pickler Classic" data-preco="R$ 29,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 29,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Bacon -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-popular"><i class="fas fa-bacon"></i> Bacon Dobrado</span>
+          <img src="Imagens/Pickler_simplebacon.jpg" alt="Hambúrguer Pickler Bacon com fatias crocantes de bacon"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Bacon</h2>
+            <p>Contém: Pão brioche, burger artesanal 180g, generosas fatias de bacon crocante e queijo cheddar
+              derretido.</p>
+            <button class="btn-pedir" data-item="Pickler Bacon" data-preco="R$ 34,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 34,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Bacon e Cheddar -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-destaque">Cheddar Cremoso</span>
+          <img src="Imagens/Pickler_baconcheddar.jpg" alt="Hambúrguer Pickler Bacon e Cheddar cremoso"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Bacon e Cheddar</h2>
+            <p>Contém: Pão brioche, burger artesanal 180g, fatias de bacon, muito cheddar cremoso, alface e tomate.</p>
+            <button class="btn-pedir" data-item="Pickler Bacon e Cheddar" data-preco="R$ 39,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 39,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Salada -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-suave">Leve & Fresco</span>
+          <img src="Imagens/Pickler_salada.jpg" alt="Hambúrguer Pickler Salada fresco e suculento"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Salada</h2>
+            <p>Contém: Pão brioche, burger artesanal 180g, queijo prato derretido, alface americana fresca e tomate
+              maduro.</p>
+            <button class="btn-pedir" data-item="Pickler Salada" data-preco="R$ 34,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 34,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Chicken Crisp -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-destaque"><i class="fas fa-drumstick-bite"></i> Super Crocante</span>
+          <img src="Imagens/Pickler_chickencrisp.jpg" alt="Hambúrguer de frango empanado e crocante com salada"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Chicken Crisp</h2>
+            <p>Contém: Pão brioche, filé de frango empanado crocante, queijo, alface, tomate e maionese especial.</p>
+            <button class="btn-pedir" data-item="Pickler Chicken Crisp" data-preco="R$ 32,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 32,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Costela Acebolado -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-especial"><i class="fas fa-fire-alt"></i> Brasa Especial</span>
+          <img src="Imagens/Pickler_costelaacebolado.jpg" alt="Hambúrguer de costela artesanal com cebola caramelizada"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Costela Acebolado</h2>
+            <p>Contém: Pão australiano, burger de costela bovina 180g, queijo cheddar, cebola caramelizada e molho
+              barbecue.</p>
+            <button class="btn-pedir" data-item="Pickler Costela Acebolado" data-preco="R$ 38,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 38,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Fish -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-suave"><i class="fas fa-fish"></i> Empanado</span>
+          <img src="Imagens/Pickler_fish.jpg" alt="Hambúrguer de peixe empanado com molho tártaro e picles"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Fish</h2>
+            <p>Contém: Pão brioche, filé de peixe empanado bem dourado, queijo derretido, picles e molho tártaro
+              artesanal.</p>
+            <button class="btn-pedir" data-item="Pickler Fish" data-preco="R$ 31,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 31,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Pulled Pork -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-especial">Barbecue Defumado</span>
+          <img src="Imagens/Pickler_pulledpork.jpg" alt="Hambúrguer com carne de porco desfiada e molho barbecue"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Pulled Pork</h2>
+            <p>Contém: Pão brioche, suculenta carne de porco desfiada ao barbecue defumado, salada coleslaw e picles.
+            </p>
+            <button class="btn-pedir" data-item="Pickler Pulled Pork" data-preco="R$ 36,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 36,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Smash -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-popular"><i class="fas fa-bolt"></i> Ultra Smash</span>
+          <img src="Imagens/Pickler_smash.jpg" alt="Hambúrguer estilo smash burger com queijo e picles"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Smash</h2>
+            <p>Contém: Pão brioche, 2 ultra smash burgers (80g cada) prensados com crosta crocante, muito cheddar e
+              picles.</p>
+            <button class="btn-pedir" data-item="Pickler Smash" data-preco="R$ 27,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 27,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Vegano -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-vegano"><i class="fas fa-leaf"></i> 100% Vegano</span>
+          <img src="Imagens/Pickler_vegano.jpg" alt="Hambúrguer Pickler Vegano com burger de soja e picles"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Vegano</h2>
+            <p>Contém: Pão brioche vegano, burger vegetal à base de soja temperada, alface fresca e picles crocante.</p>
+            <button class="btn-pedir" data-item="Pickler Vegano" data-preco="R$ 29,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 29,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Kids -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-suave"><i class="fas fa-child"></i> Kids</span>
+          <img src="Imagens/Pickler_kidscombatata.jpg" alt="Hambúrguer Pickler Kids simples com queijo"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Kids</h2>
+            <p>Contém: Pão brioche fofinho, burger artesanal 100g e queijo derretido no ponto ideal para os pequenos.
+            </p>
+            <button class="btn-pedir" data-item="Pickler Kids" data-preco="R$ 29,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 29,90
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickler Kids com Batata -->
+        <article class="hamburguer-card" data-categoria="lanches">
+          <span class="card-tag tag-destaque"><i class="fas fa-smile"></i> Combo Kids</span>
+          <img src="Imagens/Pickler_kidscombatata.jpg"
+            alt="Combo infantil com hambúrguer simples e porção de batata frita" class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickler Kids com Batata</h2>
+            <p>Contém: Pão brioche, burger artesanal 100g com queijo cheddar, acompanhado de porção individual de batata
+              frita.</p>
+            <button class="btn-pedir" data-item="Pickler Kids com Batata" data-preco="R$ 32,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 32,90
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SEÇÃO: PORÇÕES E ACOMPANHAMENTOS
+         ====================================================================== -->
+    <section id="porcoes" class="card-section" aria-label="Porções e Acompanhamentos">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-badge badge-porcao"><i class="fas fa-box-open"></i> Para Compartilhar</span>
+          <h2 class="section-title">Porções & Acompanhamentos</h2>
+        </div>
+        <p class="section-desc">Batatas fritas sequinhas, anéis de cebola dourados e nossos molhos artesanais preparados
+          diariamente.</p>
+      </div>
+
+      <div class="card-container">
+
+        <!-- Batata Frita -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-popular"><i class="fas fa-star"></i> Crocante</span>
+          <img src="Imagens/Batata_frita.jpg" alt="Porção de batata frita tradicional dourada e crocante"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Batata Frita</h2>
+            <p>Contém: 200g de batatas selecionadas, fritas até ficarem douradas e sequinhas, finalizadas com sal
+              refinado.</p>
+            <button class="btn-pedir" data-item="Batata Frita" data-preco="R$ 12,97">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 12,97
+            </button>
+          </div>
+        </article>
+
+        <!-- Batata Canoa -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-destaque">Rústica</span>
+          <img src="Imagens/Batata_canoa.jpg" alt="Porção de batata canoa rústica" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Batata Canoa</h2>
+            <p>Contém: 200g de batatas rústicas em formato canoa, perfeitas para mergulhar nos nossos molhos artesanais.
+            </p>
+            <button class="btn-pedir" data-item="Batata Canoa" data-preco="R$ 14,97">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 14,97
+            </button>
+          </div>
+        </article>
+
+        <!-- Onion Rings -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-destaque">Dourados</span>
+          <img src="Imagens/Onion_rings.jpg" alt="Porção de anéis de cebola crocantes empanados" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Onion Rings</h2>
+            <p>Contém: 200g de anéis de cebola empanados em massa crocante temperada, fritos na hora.</p>
+            <button class="btn-pedir" data-item="Onion Rings" data-preco="R$ 14,97">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 14,97
+            </button>
+          </div>
+        </article>
+
+        <!-- Pickle Chips -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-exclusivo"><i class="fas fa-award"></i> Exclusivo</span>
+          <img src="Imagens/Pickle_chips.jpg" alt="Porção de fatias de picles empanadas e fritas crocantes"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Pickle Chips</h2>
+            <p>Contém: 150g de fatias de picles selecionados, empanados em massa temperada da casa e fritos com
+              crocância extrema.</p>
+            <button class="btn-pedir" data-item="Pickle Chips" data-preco="R$ 16,97">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 16,97
+            </button>
+          </div>
+        </article>
+
+        <!-- Nuggets Crocantes -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-suave">10 Unidades</span>
+          <img src="Imagens/Nuggets.jpg" alt="Porção de nuggets de frango crocantes" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Nuggets Crocantes</h2>
+            <p>Contém: 10 unidades de nuggets suculentos de peito de frango empanados e fritos na hora.</p>
+            <button class="btn-pedir" data-item="Nuggets Crocantes" data-preco="R$ 15,97">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 15,97
+            </button>
+          </div>
+        </article>
+
+        <!-- Molho Bacon e Cheddar -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-destaque">Molho da Casa</span>
+          <img src="Imagens/Molho_baconcheddar.jpg" alt="Pote com molho de queijo cheddar aveludado e bacon"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Molho Bacon e Cheddar</h2>
+            <p>Contém: 100g de creme de cheddar aveludado com pedaços crocantes de bacon frito.</p>
+            <button class="btn-pedir" data-item="Molho Bacon e Cheddar" data-preco="R$ 4,95">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 4,95
+            </button>
+          </div>
+        </article>
+
+        <!-- Molho Pickler -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-exclusivo"><i class="fas fa-magic"></i> Receita Secreta</span>
+          <img src="Imagens/Molho_pickler.jpg" alt="Pote com molho Pickler artesanal exclusivo com picles"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Molho Pickler</h2>
+            <p>Contém: 100g de maionese cremosa artesanal com pedacinhos crocantes do autêntico picles Pickler.</p>
+            <button class="btn-pedir" data-item="Molho Pickler" data-preco="R$ 3,95">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 3,95
+            </button>
+          </div>
+        </article>
+
+        <!-- Molho Verde -->
+        <article class="hamburguer-card" data-categoria="porcoes">
+          <span class="card-tag tag-destaque">Ervas Frescas</span>
+          <img src="Imagens/Molho_verde.jpg" alt="Pote de molho verde artesanal com ervas finas" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Molho Verde</h2>
+            <p>Contém: 100g de maionese verde artesanal temperada com ervas finas frescas e alho suave.</p>
+            <button class="btn-pedir" data-item="Molho Verde" data-preco="R$ 3,95">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 3,95
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SEÇÃO: BEBIDAS REFRESCANTES
+         ====================================================================== -->
+    <section id="bebidas" class="card-section" aria-label="Bebidas">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-badge badge-bebida"><i class="fas fa-wine-bottle"></i> 100% Geladas</span>
+          <h2 class="section-title">Bebidas Refrescantes</h2>
+        </div>
+        <p class="section-desc">Sucos naturais frescos, refrigerantes bem gelados e cerveja artesanal para harmonizar
+          com o seu lanche.</p>
+      </div>
+
+      <div class="card-container">
+
+        <!-- Refri de Cola -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-suave">Geladíssimo</span>
+          <img src="Imagens/Refri_cola.jpg" alt="Copo de refrigerante de cola gelado com gelo" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Refri de Cola</h2>
+            <p>Contém: 250ml de refrigerante sabor cola, servido bem gelado e refrescante com gelo.</p>
+            <button class="btn-pedir" data-item="Refri de Cola" data-preco="R$ 7,99">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 7,99
+            </button>
+          </div>
+        </article>
+
+        <!-- Refri Guaraná -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-suave">Sabor Nacional</span>
+          <img src="Imagens/Refri_guarana.jpg" alt="Lata ou copo de refrigerante Guaraná gelado" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Refri Guaraná</h2>
+            <p>Contém: 250ml de refrigerante Guaraná tradicional bem gelado e com gás vibrante.</p>
+            <button class="btn-pedir" data-item="Refri Guaraná" data-preco="R$ 7,99">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 7,99
+            </button>
+          </div>
+        </article>
+
+        <!-- Suco de Laranja -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-destaque">Natural</span>
+          <img src="Imagens/Suco_laranja.jpg" alt="Copo de suco natural de laranja fresco" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Suco de Laranja</h2>
+            <p>Contém: 250ml de suco de laranja natural, espremido na hora para garantir máxima refrescância.</p>
+            <button class="btn-pedir" data-item="Suco de Laranja" data-preco="R$ 7,49">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 7,49
+            </button>
+          </div>
+        </article>
+
+        <!-- Suco de Abacaxi -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-destaque">Natural</span>
+          <img src="Imagens/Suco_abacaxi.jpg" alt="Copo de suco natural de abacaxi" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Suco de Abacaxi</h2>
+            <p>Contém: 250ml de suco natural de abacaxi da fruta, suavemente adoçado e bem gelado.</p>
+            <button class="btn-pedir" data-item="Suco de Abacaxi" data-preco="R$ 7,49">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 7,49
+            </button>
+          </div>
+        </article>
+
+        <!-- Suco Pickler -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-exclusivo"><i class="fas fa-magic"></i> Infusão Especial</span>
+          <img src="Imagens/Suco_pickler.jpg" alt="Copo de suco artesanal Pickler verde e refrescante"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Suco Pickler</h2>
+            <p>Contém: 250ml de suco artesanal verde com leve infusão cítrica e toque herbal secreto da casa.</p>
+            <button class="btn-pedir" data-item="Suco Pickler" data-preco="R$ 6,99">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 6,99
+            </button>
+          </div>
+        </article>
+
+        <!-- Limonada Suíça -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-destaque"><i class="fas fa-lemon"></i> Feita na Hora</span>
+          <img src="Imagens/Limonada.jpg" alt="Copo de limonada suíça refrescante" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Limonada Suíça</h2>
+            <p>Contém: 300ml de limonada suíça cremosa batida na hora com limões taiti frescos e muito gelo.</p>
+            <button class="btn-pedir" data-item="Limonada Suíça" data-preco="R$ 7,49">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 7,49
+            </button>
+          </div>
+        </article>
+
+        <!-- Cerveja Artesanal -->
+        <article class="hamburguer-card" data-categoria="bebidas">
+          <span class="card-tag tag-especial"><i class="fas fa-beer"></i> Puro Malte</span>
+          <img src="Imagens/Cerveja_artesanal.jpg" alt="Garrafa de cerveja artesanal gelada" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Cerveja Artesanal</h2>
+            <p>Contém: Garrafa de 500ml de cerveja artesanal puro malte, aroma marcante e servida estupidamente gelada.
+            </p>
+            <button class="btn-pedir" data-item="Cerveja Artesanal" data-preco="R$ 16,90">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 16,90
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SEÇÃO: SOBREMESAS IRRESISTÍVEIS
+         ====================================================================== -->
+    <section id="sobremesas" class="card-section" aria-label="Sobremesas">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-badge badge-sobremesa"><i class="fas fa-ice-cream"></i> Momento Doce</span>
+          <h2 class="section-title">Sobremesas Irresistíveis</h2>
+        </div>
+        <p class="section-desc">Feche sua experiência com chave de ouro: sorvetes cremosos, açaí artesanal e o
+          surpreendente Sorvete Pickler.</p>
+      </div>
+
+      <div class="card-container">
+
+        <!-- Sorvete de Chocolate -->
+        <article class="hamburguer-card" data-categoria="sobremesas">
+          <span class="card-tag tag-popular">Cacau Nobre</span>
+          <img src="Imagens/Sorvete_chocolate.jpg" alt="Sorvete cremoso de chocolate artesanal" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Sorvete de Chocolate</h2>
+            <p>Contém: 200ml de creme gelado artesanal com cacau puro, consistência aveludada e gotas de chocolate.</p>
+            <button class="btn-pedir" data-item="Sorvete de Chocolate" data-preco="R$ 12,49">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 12,49
+            </button>
+          </div>
+        </article>
+
+        <!-- Sorvete Pickler -->
+        <article class="hamburguer-card" data-categoria="sobremesas">
+          <span class="card-tag tag-exclusivo"><i class="fas fa-magic"></i> Sabor Exclusivo</span>
+          <img src="Imagens/Sorvete_pickles.jpg" alt="Sorvete Pickler exclusivo com sabor de picles doce"
+            class="hamburguer-img" loading="lazy">
+          <div class="detalhes">
+            <h2>Sorvete Pickler</h2>
+            <p>Contém: 200ml de creme artesanal exclusivo com toque doce aromatizado e notas sutis refrescantes.</p>
+            <button class="btn-pedir" data-item="Sorvete Pickler" data-preco="R$ 9,99">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 9,99
+            </button>
+          </div>
+        </article>
+
+        <!-- Açaí com Leite em Pó -->
+        <article class="hamburguer-card" data-categoria="sobremesas">
+          <span class="card-tag tag-destaque"><i class="fas fa-bolt"></i> Energia Pura</span>
+          <img src="Imagens/Acai.jpg" alt="Tigela de açaí natural com cobertura de leite em pó" class="hamburguer-img"
+            loading="lazy">
+          <div class="detalhes">
+            <h2>Açaí com Leite em Pó</h2>
+            <p>Contém: 200ml de açaí cremoso de alta pureza coberto com generosa camada de leite em pó.</p>
+            <button class="btn-pedir" data-item="Açaí com Leite em Pó" data-preco="R$ 14,99">
+              <i class="fas fa-cart-plus"></i> Pedir • R$ 14,99
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Botão Flutuante de Pedido via WhatsApp -->
+  <a href="https://wa.me/5548912345678?text=Ol%C3%A1%2C%20Pickler%20Hamburgueria!%20Gostaria%20de%20fazer%20um%20pedido."
+    class="btn-whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Pedir pelo WhatsApp"
+    aria-label="Pedir pelo WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="btn-whatsapp-texto">Fazer Pedido</span>
+  </a>
+
+  <!-- Rodapé / Barra Inferior -->
+  <footer class="barra_inferior">
+    <div class="barra_texto_footer">
+      <nav class="barra_under" aria-label="Informações de contato e localização">
+        <span class="social-linkk-titulo">Mais informações sobre nós:</span>
+        <a href="https://maps.app.goo.gl/YXGJeqKFSZrwhLpb8" class="social-linkk" target="_blank"
+          rel="noopener noreferrer">
+          <i class="fas fa-map-marker-alt"></i> Local
+        </a>
+        <a href="tel:+5548912345678" class="social-linkk">
+          <i class="fas fa-phone"></i> (48) 91234-5678
+        </a>
+        <a href="https://www.instagram.com/" class="social-linkk" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.facebook.com/?locale=pt_BR" class="social-linkk" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://wa.me/5548912345678?text=Ol%C3%A1%2C%20Pickler%20Hamburgueria!%20Gostaria%20de%20fazer%20um%20pedido."
+          class="social-linkk" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </nav>
+      <p class="footer-copy">© 2026 Pickler Hamburgueria • O sabor inconfundível do verdadeiro hambúrguer artesanal.</p>
+    </div>
+  </footer>
+
+  <!-- Script de Interatividade -->
+  <script src="scriptas.js"></script>
+</body>
+
+</html>
